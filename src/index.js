@@ -1,13 +1,22 @@
 import 'babel-polyfill';
 import React from 'react';
-import {render} from 'react-dom';
-import {Router, browserHistory} from 'react-router';
+import { render } from 'react-dom';
+import configureStore from './store/configureStore';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
 import routes from './routes';
-import './styles/styles.css'; // webpack can import CSS files!
+import {loadCourses} from './actions/courseActions';
+import {loadAuthors} from './actions/authorActions';
+import './styles/styles.css'; // Webpack can import CSS files too !
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+const store = configureStore();
+store.dispatch(loadCourses());
+store.dispatch(loadAuthors());
+
 render(
-    // access to push history
-    <Router history={browserHistory} routes={routes} />,
-    document.getElementById('app')
+  <Provider store={store}>
+    <Router history={browserHistory} routes={routes} />
+  </Provider>,
+  document.getElementById('app')
 );
