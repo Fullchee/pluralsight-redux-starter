@@ -1,3 +1,4 @@
+/** Container Component */
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -17,7 +18,7 @@ class CoursesPage extends React.Component {
   }
 
   render() {
-    const { courses } = this.props
+    const { courses } = this.props;
 
     return (
       <div>
