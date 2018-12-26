@@ -81,7 +81,7 @@ function mapStateToProps (state, ownProps) {
     return {
       value: author.id,
       text: author.firstName + ' ' + author.lastName
-    }
+    };
   });
 
   return {
